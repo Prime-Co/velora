@@ -64,6 +64,12 @@
       letter-spacing: -0.5px;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -87,11 +93,78 @@
       border-radius: 50px;
       font-weight: 700 !important;
       transition: background 0.2s, transform 0.2s !important;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     .nav-cta:hover {
       background: var(--purple-light) !important;
       transform: translateY(-1px);
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      margin-left: 12px;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999;
+      background: rgba(13, 0, 26, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      padding: 100px 24px 48px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--purple-glow); }
+
+    .mobile-menu .mobile-cta {
+      background: var(--purple-brand);
+      color: var(--white) !important;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      margin-top: 8px;
     }
 
     /* ── HERO ── */
@@ -220,7 +293,7 @@
       transform: translateY(-3px);
     }
 
-    /* ── ABOUT SECTION ── */
+    /* ── HOME + ABOUT COMBINED SECTION ── */
     .about-section {
       padding: 100px 48px;
       background: linear-gradient(180deg, var(--bg-dark) 0%, #110020 100%);
@@ -322,7 +395,7 @@
       line-height: 1.75;
     }
 
-    /* ── FEATURES GRID ── */
+    /* ── WHAT YOU GET (formerly Features) GRID ── */
     .features-section {
       padding: 80px 48px;
       background: #0a0015;
@@ -487,7 +560,7 @@
       box-shadow: 0 12px 36px rgba(138,0,212,0.55);
     }
 
-    /* ── MEMBERSHIP SECTION ── */
+    /* ── PACKAGE SECTION (formerly Membership) ── */
     .membership-section {
       padding: 100px 48px;
       background: #080012;
@@ -520,120 +593,6 @@
     .membership-card img {
       width: 100%;
       display: block;
-    }
-
-    /* ── STATS BAR ── */
-    .stats-bar {
-      padding: 60px 48px;
-      background: linear-gradient(135deg, var(--purple-mid), var(--purple-brand));
-    }
-
-    .stats-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .stat-item { text-align: center; }
-
-    .stat-item .num {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900;
-      color: var(--white);
-      display: block;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-item .label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .stat-divider {
-      width: 1px;
-      height: 60px;
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials-section {
-      padding: 100px 48px;
-      background: #0d001a;
-    }
-
-    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(138,0,212,0.2);
-      border-radius: 20px;
-      padding: 32px 28px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .testimonial-card:hover {
-      border-color: rgba(185,79,255,0.5);
-      transform: translateY(-4px);
-    }
-
-    .testimonial-stars {
-      color: var(--gold);
-      font-size: 1rem;
-      margin-bottom: 16px;
-      letter-spacing: 2px;
-    }
-
-    .testimonial-text {
-      color: var(--off-white);
-      font-size: 0.97rem;
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .testimonial-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple-brand), var(--purple-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--white);
-      flex-shrink: 0;
-    }
-
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--white);
-      font-size: 0.95rem;
-    }
-
-    .testimonial-handle {
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-top: 2px;
     }
 
     /* ── CTA BANNER ── */
@@ -741,7 +700,9 @@
     @media (max-width: 900px) {
       .navbar { padding: 14px 24px; }
 
-      .nav-links .nav-item { display: none; }
+      .nav-links { display: none; }
+
+      .hamburger { display: flex; }
 
       .about-inner,
       .split-inner,
@@ -751,19 +712,12 @@
 
       .features-grid { grid-template-columns: 1fr 1fr; }
 
-      .testimonials-grid { grid-template-columns: 1fr; }
-
-      .stats-divider { display: none; }
-
       .about-section,
       .features-section,
       .split-section,
       .membership-section,
-      .testimonials-section,
       .cta-banner,
       .footer { padding-left: 24px; padding-right: 24px; }
-
-      .stats-bar { padding: 44px 24px; }
     }
 
     @media (max-width: 560px) {
@@ -781,16 +735,31 @@
       <img src="images/logo.png" alt="Velora logo" />
       <span>Velora</span>
     </a>
-    <div class="nav-links">
-      <a href="#" class="nav-item">Home</a>
-      <a href="#about" class="nav-item">About</a>
-      <a href="#features" class="nav-item">Features</a>
-      <a href="#membership" class="nav-item">Membership</a>
-      <a href="register.html" class="nav-cta">Sign Up</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="#what-you-get">What You Get</a>
+        <a href="#package">Package</a>
+        <a href="register.html" class="nav-cta">Sign Up</a>
+      </div>
+      <a href="register.html" class="nav-cta" style="display:none;" id="mobile-signup">Sign Up</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home" onclick="closeMobileMenu()">Home</a>
+    <a href="how-it-works.html" onclick="closeMobileMenu()">How It Works</a>
+    <a href="#what-you-get" onclick="closeMobileMenu()">What You Get</a>
+    <a href="#package" onclick="closeMobileMenu()">Package</a>
+    <a href="register.html" class="mobile-cta">Sign Up</a>
+  </div>
+
+  <!-- HERO (Home + About combined) -->
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
@@ -809,7 +778,7 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- HOME + ABOUT MERGED -->
   <section class="about-section" id="about">
     <div class="about-inner">
       <div class="about-image fade-up">
@@ -825,37 +794,12 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <!-- <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat-item fade-up">
-        <span class="num">100K+</span>
-        <span class="label">Active Members</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item fade-up delay-1">
-        <span class="num">₦40K+</span>
-        <span class="label">Max YouTube Earn</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item fade-up delay-2">
-        <span class="num">6+</span>
-        <span class="label">Earning Streams</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item fade-up delay-3">
-        <span class="num">24/7</span>
-        <span class="label">Passive Income</span>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- FEATURES GRID -->
-  <section class="features-section" id="features">
+  <!-- WHAT YOU GET (formerly Features Grid) -->
+  <section class="features-section" id="what-you-get">
     <div class="features-inner">
       <div class="section-title fade-up">
         <span class="eyebrow">What You Can Do</span>
-        <h2>Multiple Ways to <span>Earn</span></h2>
+        <h2>What You <span>Get</span></h2>
         <p>Velora puts diverse income streams at your fingertips — pick what fits your lifestyle.</p>
       </div>
       <div class="features-grid">
@@ -962,14 +906,13 @@
     </div>
   </section>
 
-  <!-- MEMBERSHIP -->
-  <section class="membership-section" id="membership">
+  <!-- PACKAGE (formerly Membership) -->
+  <section class="membership-section" id="package">
     <div class="membership-inner">
       <div class="section-title fade-up">
         <span class="eyebrow">Blueprint Patterns</span>
-        <h2>Choose Your <span>Membership</span></h2>
+        <h2>Choose Your <span>Package</span></h2>
         <p>Pick the plan that matches your ambition and start earning from day one.</p>
-        <p><strong class="note">Note: You earn double on Gold plan</strong></p>
       </div>
       <div class="membership-grid">
         <div class="membership-card fade-up">
@@ -986,51 +929,6 @@
       </div>
     </div>
   </section>
-
-  <!-- TESTIMONIALS
-  <section class="testimonials-section">
-    <div class="testimonials-inner">
-      <div class="section-title fade-up">
-        <span class="eyebrow">Member Stories</span>
-        <h2>Real People, <span>Real Earnings</span></h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-up">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"I joined Velora Gold two months ago and I've already earned over ₦85,000 from the WhatsApp rewards and referrals alone. This is the real deal."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">A</div>
-            <div>
-              <div class="testimonial-name">Adaeze Nwosu</div>
-              <div class="testimonial-handle">Velora Gold Member · Lagos</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up delay-1">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"The AI Boxes feature alone paid back my activation fee within the first week. I love how many ways there are to earn — it never feels like work."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">K</div>
-            <div>
-              <div class="testimonial-name">Kelechi Eze</div>
-              <div class="testimonial-handle">Velora Platinum Member · Abuja</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up delay-2">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"I was skeptical at first but the instant cashback on joining was immediate. Now I'm earning consistently from the News Reward and YouTube streams every week."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">F</div>
-            <div>
-              <div class="testimonial-name">Fatima Bello</div>
-              <div class="testimonial-handle">Velora Gold Member · Kano</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
   <!-- CTA BANNER -->
   <section class="cta-banner">
@@ -1051,10 +949,10 @@
         <span>Velora</span>
       </a>
       <div class="footer-links">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#membership">Membership</a>
+        <a href="#home">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="#what-you-get">What You Get</a>
+        <a href="#package">Package</a>
         <a href="register.html">Sign Up</a>
       </div>
     </div>
@@ -1085,6 +983,37 @@
         navbar.style.boxShadow = 'none';
       }
     });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileSIgnup = document.getElementById('mobile-signup');
+
+    // Show the Sign Up button on mobile (next to hamburger)
+    function checkMobile() {
+      if (window.innerWidth <= 900) {
+        mobileSIgnup.style.display = 'inline-flex';
+      } else {
+        mobileSIgnup.style.display = 'none';
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
+    }
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   </script>
 </body>
 </html>
