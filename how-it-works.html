@@ -774,6 +774,15 @@
   </footer>
 
   <script>
+    // Site Protection
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'i')) {
+    e.preventDefault();
+  }
+});
+
+    
     // Intersection observer for fade-up
     const els = document.querySelectorAll('.fade-up');
     const obs = new IntersectionObserver(entries => {
